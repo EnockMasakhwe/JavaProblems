@@ -9,67 +9,81 @@ public class AudiDecisionTree {
         String name = scanner.nextLine().trim();
 
         System.out.println("Hey " + name + ", do you have own an Audi? \n1. Yes \n2. No");
-        int ownershipResponse = scanner.nextInt();
+        int ownershipResponse = getValidInput(scanner, 1, 2);
 
         if(ownershipResponse == 1){
             System.out.println("Wow, congratulations for owning an Audi!");
-        }else if(ownershipResponse == 2){
+        }else{
             System.out.println("Would you like to own one? \n1. Yes \n2. No");
-            int interestResponse = scanner.nextInt();
+            int interestResponse = getValidInput(scanner, 1, 2);
             if (interestResponse == 1) {
                 System.out.println("Do you have money? \n1. Yes \n2. No \n3. Not for Audi");
-                int moneyResponse = scanner.nextInt();
+                int moneyResponse = getValidInput(scanner, 1, 3);
                 if (moneyResponse == 1) {
                     System.out.println("Go buy yourself an Audi:)");
                 }else if(moneyResponse == 2){
                     System.out.println("Do you have a job? \n1. Yes \n2. No");
-                    int jobResponse = scanner.nextInt();
+                    int jobResponse = getValidInput(scanner, 1, 2);
                     if (jobResponse == 1) {
                         System.out.println("Do they pay you? \n1. Yes \n2. No");
-                        int payResponse = scanner.nextInt();
+                        int payResponse = getValidInput(scanner, 1, 2);
                         if (payResponse == 1) {
                             System.out.println("Then go buy an Audi:)");
-                        }else if (payResponse == 2) {
-                            System.out.println("Do you have possessions? \n1. Yes \n2. No");
-                            int possessResponse = scanner.nextInt();
-                            if (possessResponse == 1) {
-                                System.out.println("Sell them and buy an Audi:)");
-                            }else if (possessResponse == 2) {
-                                System.out.println("Do you have a kidney? \n1. Yes \n2. No");
-                                int kidneyResponse = scanner.nextInt();
-                                if (kidneyResponse == 1) {
-                                    System.out.println("Then sell it for a handsome amount and buy an Audi:)");
-                                }else if(kidneyResponse == 2){
-                                    System.out.println("You're a liar!");
-                                }else{
-                                    System.out.println("Enter a valid response (1/2): ");
-                                }
-                            }else{
-                                System.out.println("Enter a valid response (1/2): ");
-                            }
                         }else{
-                            System.out.println("Enter a valid response (1/2): ");
+                            possessions(scanner);
                         }
-                    }else if(jobResponse == 2){
-                        System.out.println("Do you have possessions? \n1. Yes \n2. No");
                     }else{
-                        System.out.println("Enter a valid response (1/2): ");
+                        possessions(scanner);
                     }
-                }else if(moneyResponse == 3){
-                    System.out.println("Ouch, that's blasphemy!");
                 }else{
-                    System.out.println("Enter a valid response (1/2/3): ");
+                    System.out.println("Ouch, that's blasphemy!");
                 }
-            } else if(interestResponse == 2) {
-                System.out.println("Oups! Thank you for participating.");
             }else{
-                System.out.println("Enter a valid response (1/2): ");
+                System.out.println("Oups! Thank you for participating.");
             }
-        }else{
-            System.out.println("Enter a valid response (1/2): ");
         }
+
 
         scanner.close();
 
+
     }
+
+    public static int getValidInput(Scanner scanner, int min, int max){
+
+        int input;
+        while(true){
+            System.out.println("Enter your choice: ");
+
+            if (scanner.hasNextInt()) {
+                input = scanner.nextInt();
+                if (input >= min && input <= max) {
+                    return input;
+                }
+            }else{
+                scanner.next();
+            }
+            System.out.println("Invalid input. Please enter a number between " + min + " and " + max + ".");
+        }
+    }
+
+    public static void possessions(Scanner scanner){
+        System.out.println("Do you have possessions? \n1. Yes \n2. No ");
+        int possessionResponse = getValidInput(scanner, 1, 2);
+
+        if (possessionResponse == 1) {
+            System.out.println("Then sell them and buy yourself an Audi:)");
+        }else{
+            System.out.println("Do you have a kidney? \n1. Yes \n2. No");
+            int kidneyResponse = getValidInput(scanner, 1, 2);
+
+            if (kidneyResponse == 1) {
+                System.out.println("Sell it and buy an Audi:)");
+            }else{
+                System.out.println("You're a liar! Sell it and get yourself the latest Audi:)");
+            }
+        }
+    
+    }
+
 }
