@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class LifeSpanCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        //constant
         final int maxAge = 100;
 
         System.out.println("Hey there, let's see how much longer you have to live before clocking 100:)");

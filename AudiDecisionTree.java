@@ -11,6 +11,7 @@ public class AudiDecisionTree {
         System.out.println("Hey " + name + ", do you have own an Audi? \n1. Yes \n2. No");
         int ownershipResponse = getValidInput(scanner, 1, 2);
 
+        //Conditions that assess your situation and guides on how to get an Audi
         if(ownershipResponse == 1){
             System.out.println("Wow, congratulations for owning an Audi!");
         }else{
@@ -48,7 +49,9 @@ public class AudiDecisionTree {
 
 
     }
+    
 
+    //Reusable getValidInput method that ensures input is valid
     public static int getValidInput(Scanner scanner, int min, int max){
 
         int input;
@@ -67,6 +70,7 @@ public class AudiDecisionTree {
         }
     }
 
+    //Reusable askForPossessions method that reduces repetition
     public static void possessions(Scanner scanner){
         System.out.println("Do you have possessions? \n1. Yes \n2. No ");
         int possessionResponse = getValidInput(scanner, 1, 2);
