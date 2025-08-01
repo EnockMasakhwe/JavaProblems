@@ -17,5 +17,7 @@ public class EvenOddOrPrime {
         System.out.println("+=".repeat(40));
         System.out.println("The number is: " + result + ".");
 
+        scanner.close();
+
     }
 }
